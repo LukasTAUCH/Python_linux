@@ -134,3 +134,62 @@ Result :
 
 ### 3. Create a folder linux_ex_1
 ```
+~$ mkdir linux_ex_1
+```
+
+### 4. Go into this folder
+```
+~$ cd linux_ex_1
+```
+
+### 5. Create an empty text file named [first_name]_[last_name].txt (e.g. alexis_bogroff.txt)
+```
+~/linux_ex_1$ touch lukas_tauch.txt
+~.linux_ex_1$ ls
+```
+Result : 
+```
+lukas_tauch.txt
+```
+
+### 6. Create a folder notes
+```
+~/linux_ex_1$ mkdir notes
+```
+
+### 7. Move your text file into this folder
+```
+~/linux_ex_1$ mv lukas_tauch.txt /home/lukas/linux_ex_1/notes 
+```
+
+### 8. Rename the text file by appending the current year [first_name]_[last_name]_[current_year].txt
+```
+~/linux_ex_1$ cd notes 
+~/linux_ex_1/notes$ mv lukas_tauch.txt lukas_tauch_2023.txt
+```
+
+### 9. Make a copy of this folder, name it notes_2022
+```
+~/linux_ex_1/notes$ cd ..
+~/linux_ex_1$ cp -R notes notes_2022
+```
+
+### 10. Delete the first folder (notes) using the verbose option
+``` 
+~/linux_ex_1$ rm -rfv notes 
+~/linux_ex_1$ ls
+```
+Result : 
+```
+notes_2022
+```
+
+## Exercise 3: Create and run a script
+
+### 1. Create a script script_1.sh in the folder linux_ex_1
+### 2. In the script, write the commands that would output the following : Script running please wait ... Done.
+### 3. Quit editing and save the script
+### 4. Display the content of the script (using a command, not from an editor)
+### 5. Run the script
+
+## Exercise 4: Accessing or modifying a file : permissions and root privilege
