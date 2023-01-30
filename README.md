@@ -77,3 +77,60 @@ Result :
 ```
 /home
 ```
+
+### 8. Go again "just above", you should be back to the root directory
+```
+/home$ cd ..
+```
+
+### 9. Go directly to your home directory (named after you). It should be a very simple command, which take no name as parameter of the path
+```
+/$ cd
+~$ pwd
+```
+Result :
+```
+/home/lukas
+```
+
+### 10. Try to create a directory named test
+question made at 4
+
+### 11. Go into this new directory
+```
+~$ cd Documents 
+~/Documents$ cd test
+~/Documents/test$ pwd
+```
+Result :
+```
+/home/lukas/Documents/test
+```
+
+### 12. Check your current location
+```
+~/Documents/test$ pwd
+```
+Result : 
+```
+/home/lukas/Documents/test
+```
+
+## Exercise 2: Create, Rename, copy, delete
+
+### 1. Go to your home directory (should be named after you, you might be there by default)
+```
+~/Documents/test$ cd
+```
+
+### 2. Check your current location
+```
+~$ pwd 
+```
+Result : 
+```
+/home/lukas
+```
+
+### 3. Create a folder linux_ex_1
+```
