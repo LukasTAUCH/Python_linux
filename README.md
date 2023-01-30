@@ -4,6 +4,7 @@
 
 I specify to avoid repeating, I replace __"lukas@Lukas-VM:"__ simply by the __nothing__ thus the commands which I will write __"lukas@Lukas-VM:"__ this locates in front. For example: __"lukas@Lukas-VM:~$pwd"__ I will write __"~$pwd"__ with the result.
 
+https://www.hostinger.fr/tutoriels/commandes-linux
 
 ## Exercise 1 : Move Around 
 
