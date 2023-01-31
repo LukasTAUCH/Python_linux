@@ -287,7 +287,46 @@ Result :
 ```
 -rwxrw-rw- 1 lukas lukas 50 janv. 31 08.51 credentials
 ```
-2. Remove the read permission to other users
+### 2. Remove the read permission to other users
+```
+~/linux_ex_1$ chmod o-r credentials
+```
 (a) Display the new permissions
-3. Change the permissions to read, write and execute for all users
+```
+~/linux_ex_1$ ls -l credentials
+```
+Result : 
+```
+-rwxrw--w- 1 lukas lukas 50 janv. 31 08.58 credentials
+```
+### 3. Change the permissions to read, write and execute for all users
+```
+~/linux_ex_1$ chmod a+rwx credentials
+```
 (a) Display the new permissions
+```
+~/linux_ex_1$ ls -l credentials
+```
+Result : 
+```
+-rwxrwxrwx 1 lukas lukas 50 janv. 31 08.58 credentials
+```
+## Exercise 4:.2 Access root files
+### 1. Go to the root folder
+```
+~/linux_ex_1$ cd /
+```
+### 2. Create a file in root user mode named .private_file
+
+(a) Write some information in the file
+(b) Display the file content
+(c) Display all the files in the folder including hidden files
+### 3. Modify the file in normal user mode
+(a) Write some new information in the file
+(b) Display the file content
+### 4. Modify the file in root user mode
+(a) Write some new information in the file
+(b) Display the file content
+### 5. Change permissions to read, write and execute for all users
+(a) Modify the file content in normal user mode
+(b) Display the file content
