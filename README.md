@@ -598,21 +598,22 @@ pilou
 ## Exercise 3: Scheduling task - daemon
 ### 1. Create a script say_hello.sh
 ```
-
+touch say_hello.sh
 ```
 — Make it write the current date and time followed by ’Hello’
 — It should write it in a file named ’hellos.txt’
 — Each new output should be appened to the file (it shouldn’t remove previous hellos)
 ```
-
+date +"%c - Hello" >> say_hellos.sh
 ```
 ### 2. Make the script executable
 ```
-
+chmod +x say_hello.sh
 ```
 ### 3. Use crontab to schedule the running of the script every minute
 ```
-
+crontab -e
+* * * * * /home/lukas/my_programs/say_hello.sh
 ```
 
 
