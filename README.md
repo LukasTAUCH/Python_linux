@@ -317,14 +317,26 @@ Result :
 ~/linux_ex_1$ cd /
 ```
 ### 2. Create a file in root user mode named .private_file
-
+```
+/$ sudo nano .private_file
+```
 (a) Write some information in the file
 (b) Display the file content
+```
+/$ cat .private_file
+```
 (c) Display all the files in the folder including hidden files
+```
+/$ ls -a
+```
 ### 3. Modify the file in normal user mode
+Can't write 
 (a) Write some new information in the file
 (b) Display the file content
 ### 4. Modify the file in root user mode
+```
+/$ sudo nano .private_file
+```
 (a) Write some new information in the file
 (b) Display the file content
 ### 5. Change permissions to read, write and execute for all users
