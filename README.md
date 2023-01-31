@@ -425,18 +425,72 @@ cmatrix
 ```
 ### 10. Detach from the current tmux session (without stopping cmatrix)
 ```
+Ctrl + B + D
 ```
 ### 11. Create a new tmux session
+```
+Ctrl + B + %
+```
 ### 12. Say "Hello session 1" using bash in your new tmux session
 ### 13. Detach from the current tmux session
 ### 14. List all running sessions
+```
+tmux list-sessions
+```
 ### 15. Attach again to session 0
+```
+tmux attach-session -t session0
+```
 ### 16. Detach again
 ### 17. Attach again to session 1
 ### 18. Detach again
 ### 19. List all running sessions
 ### 20. Kill all tmux sessions and quit tmux
+```
+tmux kill-session -a
+```
 ### 21. List all sessions
+```
+tmux list-sessionstmux list-sessions
+```
+## Exercise 4:.5 Use functions arguments / parameters
+### 1. Display the cmatrix help function
+```
+cmatrix -h
+```
+### 2. Launch cmatrix and make it display white characters (in place of the green)
+```
+cmatrix -C white
+```
+### 3. Re-launch cmatrix and slow down the speed of characters actualization
+```
+cmatrix -s 5
+```
+### 4. Stop cmatrix
+```
+CTRL + C
+```
+### 5. Launch cmatrix with both :
+— A slow speed of characters actualization
+— Blue characters
+```
+cmatrix -s 5 -C blue
+```
+### 6. Display cmatrix manual (different from the help notice)
+```
+man cmatrix
+```
+### 7. Display the tmux help function
+```
+tmux -h
+```
+### 8. Display the tmux manual
+```
+man tmux
+```
 
+# TD 2  Fundamental Linux functionalities
+
+## Exercise 1: Access general computer informations
 
 
