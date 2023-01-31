@@ -388,15 +388,44 @@ Result :
 
 ## Exercise 4:.4 Manage Packages (tools / functions)
 ### 1. Update your main package manager named apt
+```
+/$ sudo apt update
+```
 ### 2. Upgrade apt
+```
+/$ sudo apt upgrade
+```
 ### 3. Install the package cmatrix
+```
+/$ sudo apt install cmatrix
+```
 ### 4. Launch cmatrix
+```
+/$ cmatrix 
+```
 ### 5. Quit cmatrix
+```
+CTRL + C
+```
 #### 6. Install the package tmux
+```
+/$ sudo apt install tmux
+```
 ### 7. Launch tmux
+```
+/$ tmux
+```
 ### 8. Say "Hello session 0" using bash in your current tmux session
+```
+echo "Hello session 0"
+```
 ### 9. Launch cmatrix in your current tmux session
+```
+cmatrix
+```
 ### 10. Detach from the current tmux session (without stopping cmatrix)
+```
+```
 ### 11. Create a new tmux session
 ### 12. Say "Hello session 1" using bash in your new tmux session
 ### 13. Detach from the current tmux session
