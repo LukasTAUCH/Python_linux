@@ -432,13 +432,17 @@ tmux attach-session -t session0
 ### 17. Attach again to session 1
 ### 18. Detach again
 ### 19. List all running sessions
+
+all the same 
+https://gist.github.com/mzmonsour/8791835
+
 ### 20. Kill all tmux sessions and quit tmux
 ```
 tmux kill-session -a
 ```
 ### 21. List all sessions
 ```
-tmux list-sessionstmux list-sessions
+tmux list-sessions
 ```
 ## Exercise 4:.5 Use functions arguments / parameters
 ### 1. Display the cmatrix help function
@@ -480,14 +484,140 @@ man tmux
 
 ## Exercise 1: Access general computer informations
 ### 1. Put system up to date
+```
+sudo apt update && sudo apt upgrade
+```
 2. Display
 — Linux version
+```
+cat /etc/*-release or lsb_release -a
+```
 — Current processes and memory usage associated
+```
+top 
+```
 — Display it in a more pleasant way ("more readable for humans")
+```
+htop
+```
+But, you need to do
+```
+sudo snap install htop  #version 3.2.1
+sudo apt install htop #version 3.0.5-7build2
+```
 — Number of processors
+```
+nproc
+```
 — L1, L2 and L3 cache size
+```
+lscpu | grep 'Cache'
+```
 — Disk space
+```
+df -h
+```
 — Monted devices
+```
+lsblk
+```
 — Connected usb devices
+```
+lsusb
+```
 — Hostname
+```
+hostname
+```
+
+## Exercise 2: Shell - Variables and scripts scope
+### 1. Create a variable x and assign it the short text piri pimpin
+```
+x="piri pimpin"
+```
+### 2. Display the value of this variable
+```
+echo $x
+```
+###3. Add to this value the following text piri pimpon
+It should contain the following : piri pimpim piri pimpon
+```
+x="$x piri pimpin"
+```
+### 4. Create a folder named my_programs, then enter into that folder
+```
+mkdir my_programs && cd my_programs
+```
+### 5. Create a script named pilou that displays pilou pilou
+```
+echo "echo pilou pilou" > pilou
+```
+### 6. Run this script
+```
+bash pilou
+```
+### 7. Make this script executable
+```
+chmod +x pilou
+```
+### 8. Run the script by writting its name only
+```
+./pilou
+```
+### 9. Programs called from the terminal are usually found thanks to a variable named PATH
+Display the content of the variable PATH
+```
+echo $PATH
+```
+### 10. Add the path of your current location to the global variable PATH
+```
+export PATH="$PATH:$(pwd)"
+```
+### 11. When you are sure of the result, export it
+```
+export PATH
+```
+### 12. Go to your home directory
+```
+cd ~
+```
+### 13. Run your script by writting its name only
+```
+pilou
+```
+### 14. Change the value of the PATH in the .profile file in order to make it permanent
+```
+echo 'export PATH="$PATH:$(pwd)"' >> ~/.profile
+```
+### 15. Create a new shell and run your script using its name only
+```
+bash
+pilou
+```
+
+## Exercise 3: Scheduling task - daemon
+### 1. Create a script say_hello.sh
+```
+
+```
+— Make it write the current date and time followed by ’Hello’
+— It should write it in a file named ’hellos.txt’
+— Each new output should be appened to the file (it shouldn’t remove previous hellos)
+```
+
+```
+### 2. Make the script executable
+```
+
+```
+### 3. Use crontab to schedule the running of the script every minute
+```
+
+```
+
+
+
+
+
+
 
