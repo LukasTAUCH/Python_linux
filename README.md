@@ -358,15 +358,56 @@ Result :
 ## Exercise 4:.3 Change a file owner
 ### 1. Change permissions of .private_file to read and write for all users, in normal user mode
 ```
-
+/$ chmod 666 .private_file
+```
+Result : 
+```
+-rw-rw-rw- 1 root root 36 janv. 31 09:57 .private_file
 ```
 
 ### 2. Set the new file owner as the current user
 ```
-chown $USER .private_file
+/$ chown $USER .private_file
+```
+```
+-rwxrw-r--    10    root   root 2048    Jan 13 07:11 afile.exe
+?UUUGGGOOOS   00  UUUUUU GGGGGG ####    ^-- date stamp and file name are obvious ;-)
+^ ^  ^  ^ ^    ^      ^      ^    ^
+| |  |  | |    |      |      |    \--- File Size
+| |  |  | |    |      |      \-------- Group Name (for example, Users, Administrators, etc)
+| |  |  | |    |      \--------------- Owner Acct
+| |  |  | |    \---------------------- Link count (what constitutes a "link" here varies)
+| |  |  | \--------------------------- Alternative Access (blank means none defined, anything else varies)
+| \--\--\----------------------------- Read, Write and Special access modes for [U]ser, [G]roup, and [O]thers (everyone else)
+\------------------------------------- File type flag
+```
+Result : 
+```
+-rw-rw-rw- 1 lukas root 36 janv. 31 09/57 .private_file
 ```
 
-### 3. Change permissions of .private_file to read and write for all users, in normal user mode
-```
+## Exercise 4:.4 Manage Packages (tools / functions)
+### 1. Update your main package manager named apt
+### 2. Upgrade apt
+### 3. Install the package cmatrix
+### 4. Launch cmatrix
+### 5. Quit cmatrix
+#### 6. Install the package tmux
+### 7. Launch tmux
+### 8. Say "Hello session 0" using bash in your current tmux session
+### 9. Launch cmatrix in your current tmux session
+### 10. Detach from the current tmux session (without stopping cmatrix)
+### 11. Create a new tmux session
+### 12. Say "Hello session 1" using bash in your new tmux session
+### 13. Detach from the current tmux session
+### 14. List all running sessions
+### 15. Attach again to session 0
+### 16. Detach again
+### 17. Attach again to session 1
+### 18. Detach again
+### 19. List all running sessions
+### 20. Kill all tmux sessions and quit tmux
+### 21. List all sessions
+
 
 
