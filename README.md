@@ -188,9 +188,106 @@ notes_2022
 ## Exercise 3: Create and run a script
 
 ### 1. Create a script script_1.sh in the folder linux_ex_1
+```
+~/linux_ex_1$ nano script_1.sh
+````
 ### 2. In the script, write the commands that would output the following : Script running please wait ... Done.
+```
+echo "Script running please wait..."
+echo "Done."
+```
 ### 3. Quit editing and save the script
+```
+ctr + x then "O" then "Enter"
+```
 ### 4. Display the content of the script (using a command, not from an editor)
+```
+~/linux_ex_1$ cat script_1.sh
+```
 ### 5. Run the script
+```
+~/linux_ex_1$ chmod +x script_1.sh
+~/linux_ex_1$ ./script_1.sh
+```
 
 ## Exercise 4: Accessing or modifying a file : permissions and root privilege
+### 1. Create a file credentials in the folder linux_ex_1
+```
+~/linux_ex_1$ nano credentials
+```
+(a) Write any kind of (fake) personal information within the file
+```
+Write anything
+ctrl + x then "O" then enter
+```
+(b) Display the file content
+```
+~/linux_ex_1$ cat credentials
+```
+(c) Display the current permissions
+```
+~/linux_ex_1$ ls -l credentials
+```
+Result : 
+```
+-rw-rw-r-- 1 lukas lukas 26 janv. 31 08:41 credentials
+```
+### 2. Change the current permissions to : read only for all users
+(a) Display the new permissions
+```
+~/linux_ex_1$ chmod a=r credentials
+~/linux_ex_1$ ls -l credentials
+```
+Result : 
+```
+-r--r--r-- 1 lukas lukas 26 janv. 31 08:41 credentials
+```
+(b) Modify and save the file
+```
+~/linux_ex_1$ nano credentials
+
+if we don't have permission we can do ~/linux_ex_1$ chmod a+w credentials
+```
+__"a+w"__ to allow writing "w" for all "a" user 
+(c) Display the file content
+```
+~/Linux_ex_1$ cat credentials
+```
+### 3. Change the permissions back to read and write for all users
+```
+~/linux_ex_1$ chmod a+rw credentials
+```
+Like before but with a __"r"__ we do recursive 
+(a) Display the new permissions
+```
+~/linux_ex_1$ ls -l credentials
+```
+Result :
+```
+-rw-rw-rw- 1 lukas lukas 35 janv. 31 08.54 credentials
+```
+(b) Modify and save the file
+```
+~/linux_ex_1$ nano credentials
+```
+(c) Display the file content
+```
+~/linux_exe_1$ cat credentials
+```
+### On the same file :
+### 1. Add the execute permission to the owner
+```
+~/Linux_ex_1$ chmod u+x credentials
+```
+(a) Display the new permissions
+```
+~/linux_ex_1$ ls -l credentials
+```
+Result : 
+```
+-rwxrw-rw- 1 lukas lukas 50 janv. 31 08.51 credentials
+```
+2. Remove the read permission to other users
+(a) Display the new permissions
+3. Change the permissions to read, write and execute for all users
+(a) Display the new permissions
