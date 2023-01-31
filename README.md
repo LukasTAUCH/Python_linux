@@ -7,7 +7,6 @@ I specify to avoid repeating, I replace __"lukas@Lukas-VM:"__ simply by the __no
 https://www.hostinger.fr/tutoriels/commandes-linux
 
 ## Exercise 1 : Move Around 
-
 ### 1 : Go to the root directory
 ```
 ~$ pwd 
@@ -16,7 +15,6 @@ Result :
 ```
 /home/lukas
 ```
-
 ### 2. Display the content of the current (root) directory
 ```
 ~$ ls
@@ -25,7 +23,6 @@ Result :
 ```
 Bureau Documents Images Modèles Musique Public snap Téléchargements Vidéos
 ```
-
 ### 3. Check your current location
 ```
 ~$ pwd
@@ -35,7 +32,6 @@ Here we can see the location
 ```
 /home/lukas
 ```
-
 ### 4. Try to create a directory named test
 ```
 ~$ cd Documents
@@ -46,7 +42,6 @@ Result :
 ```
 test
 ```
-
 ### 5. Go to the general home directory (should contain folders named after each user)
 ```
 ~/Documents$ cd ..
@@ -58,7 +53,6 @@ Result :
 lukas
 ```
 Because I have 1 user 
-
 ### 6. Go to your home directory
 ```
 /homme$ cd ..
@@ -68,7 +62,6 @@ Result :
 ```
 bin boot cdrom dev etc hom lib lib32 lib64 libx32 lost+found media mnt opt proc root run sbin snap srv swapfile sys tmp usr var
 ```
-
 ### 7. Go back to the general home directory (located "just above")
 ```
 /$ cd home
@@ -78,12 +71,10 @@ Result :
 ```
 /home
 ```
-
 ### 8. Go again "just above", you should be back to the root directory
 ```
 /home$ cd ..
 ```
-
 ### 9. Go directly to your home directory (named after you). It should be a very simple command, which take no name as parameter of the path
 ```
 /$ cd
@@ -93,10 +84,8 @@ Result :
 ```
 /home/lukas
 ```
-
 ### 10. Try to create a directory named test
 question made at 4
-
 ### 11. Go into this new directory
 ```
 ~$ cd Documents 
@@ -107,7 +96,6 @@ Result :
 ```
 /home/lukas/Documents/test
 ```
-
 ### 12. Check your current location
 ```
 ~/Documents/test$ pwd
@@ -116,7 +104,6 @@ Result :
 ```
 /home/lukas/Documents/test
 ```
-
 ## Exercise 2: Create, Rename, copy, delete
 
 ### 1. Go to your home directory (should be named after you, you might be there by default)
@@ -489,8 +476,18 @@ tmux -h
 man tmux
 ```
 
-# TD 2  Fundamental Linux functionalities
+# TD 2 Fundamental Linux functionalities
 
 ## Exercise 1: Access general computer informations
-
+### 1. Put system up to date
+2. Display
+— Linux version
+— Current processes and memory usage associated
+— Display it in a more pleasant way ("more readable for humans")
+— Number of processors
+— L1, L2 and L3 cache size
+— Disk space
+— Monted devices
+— Connected usb devices
+— Hostname
 
