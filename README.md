@@ -339,6 +339,34 @@ Can't write
 ```
 (a) Write some new information in the file
 (b) Display the file content
+```
+/$ cat .private_file
+```
 ### 5. Change permissions to read, write and execute for all users
+```
+/$ sudo chmod a+rwx .private_file
+```
 (a) Modify the file content in normal user mode
 (b) Display the file content
+```
+/$ cat .private_file
+```
+Result :
+```
+-rwxrwxrwx 1 root root 36 janv. 09:57 .private_file
+```
+## Exercise 4:.3 Change a file owner
+### 1. Change permissions of .private_file to read and write for all users, in normal user mode
+```
+
+```
+
+### 2. Set the new file owner as the current user
+```
+chown $USER .private_file
+```
+
+### 3. Change permissions of .private_file to read and write for all users, in normal user mode
+```
+
+
