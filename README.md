@@ -615,9 +615,139 @@ chmod +x say_hello.sh
 crontab -e
 * * * * * /home/lukas/my_programs/say_hello.sh
 ```
+To make the command work, you must reboot the system.
 
+To check status 
+```
+systemctl status cron
+```
+## Exercise 4: Hashing
+### 1. Create a folder named hash_checksum. Go into this folder
+```
+mkdir hash_checksum
+```
+### 2. Inside this folder, create two files named .sensible_addresses and .sensible_passwords
+```
+cd hash_checksum 
+touch .sensible_addresses .sensible_passwords
+```
+### 3. Display the list of files of the folder
+```
+ls
+```
+We cannot see the files because they are hidden.
 
+### 4. Still inside the folder hash_checksum, create a script named gentle_script.sh. This script should display the following text "Have a good day"
+```
+echo '#!/bin/bash' > gentle_script.sh
+echo 'echo "Have a good day"' >> gentle_script.sh
+chmod +x gentle_script.sh
+```
+### 5. Run the script
+```
+./gentle_script.sh
+```
+### 6. Compute the sha256sum of gentle_script. Store it into a file named log_sha
+```
+sha256sum gentle_script.sh > log_sha
+```
+### 7. Now corrupt the file by adding a line of code that deletes any file starting with : ".sensible"
+```
+echo 'rm -f .sensible*' >> gentle_script.sh
+```
+### 8. Compute again the sha256sum of gentle_script. Store it into the log_sha file
+```
+sha256sum gentle_script.sh >> log_sha
+```
+### 9. Run the script
+```
+./gentle_script.sh
+```
+### 10. Display again the list of files of the folder
+```
+ls
+```
+### 11. Display the log_sha content : are the hashes any different ?
+```
+cat log_shat
+```
+## Exercise 5: Compressing
+### 1. Install the QPDF free command-line program.
+```
+sudo apt-get install qpdf
+```
+Part of this program is the zlib-flate command that compress and uncompress files using the deflate algorithm.
+### 2. Create a directory "compress", go into this directory
+```
+mkdir compress && cd compress
+```
+### 3. Create a first file "hello" whose content is "Hello"
+```
+echo "Hello" > hello
+```
+### 4. Compute the deflate compression (level 1) of this file. Store the compressed file size into a file log_compress
+```
+zlib-flate -compress -level 1 < hello > hello.deflate && echo "hello $(wc -c < hello.deflate)" >> log_compress
+```
+### 5. Create a second file "hello_multiple" whose content is 1000 lines of "Hello" 2
+```
+yes Hello | head -1000 > hello_multiple
+```
+### 6. Compute the deflate compression (level 1) of this file. Store the compressed file size into a file log_compress
+```
+zlib-flate -compress -level 1 < hello_multiple > hello_multiple.deflate && echo "hello_multiple $(wc -c < hello_multiple.deflate)" >> log_compress
+```
+### 7. Create a third file "hello_mulitple_i" whose content is 1000 lines of "Hello i" (i varying from 1 to 100)
+```
+for i in $(seq 1 1000); do echo "Hello $i"; done > hello_multiple_i
+```
+### 8. Compute the deflate compression (level 1) of this third file. Store the compressed file size into log_compress
+```
+zlib-flate -compress -level 1 < hello_multiple_i > hello_multiple_i.deflate && echo "hello_multiple_i $(wc -c < hello_multiple_i.deflate)" >> log_compress
+```
+### 9. Display the content of log_compress
+```
+cat log_compress
+```
+### 10. Compute the compression ratio of each file, also display it as a simple
+fraction (e.g. 12.6 => 10 :1)
+```
+echo "Compression ratio (fractional):"
+for file in hello hello_multiple hello_multiple_i; do
+  original_size=$(wc -c < $file)
+  compressed_size=$(wc -c < ${file}.deflate)
+  ratio=$(bc <<< "scale=2; $compressed_size/$original_size")
+  fraction=$(bc <<< "scale=0; $original_size/$compressed_size")
+  echo "$file: $ratio ($fraction : 1)"
+done
 
+```
+### 11. Analyse the results
+
+## Ex 6 
+
+# TD3/9: Work with text manipulation tools in Linux
+## Exercise 1: Grep and awk on tabular data
+### 1. Display the list of files and folders at the root using ls -l
+```
+ls -l /
+```
+### 2. In a pipeline (using |), append a grep instruction to only display informations of bin
+```
+ls -l / | grep bin
+```
+###3. Append an awk instruction to only display the size of bin
+```
+ls -l / | grep bin | awk '{print $5}'
+```
+### 4. Now rather extract the month, day and year of creation of the folder bin
+```
+ls -l / | grep bin | awk '{print $6, $7, $8}'
+```
+###5. Now rearrange the instruction to get the following output format : 2020- Oct-26 (from original data : Oct 26 2020)
+```
+ls -l / | grep bin | awk '{print $8"-"$6"-"$7}'
+```
 
 
 
