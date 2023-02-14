@@ -759,8 +759,13 @@ grep "meta" cyberattacks.txt
 ```
 ### 3. Now only extract "meta" and the first following word. You might use grep options to enable the use of regex (Regular Expressions) 1
 ```
-grep -o -E "meta [[:alpha:]]+" cyberattacks.txt
+cat cyberattacks.txt | grep -oP '(?=meta ).+(?<=meta )[^ ]*'
+OU 
+cat cyberattacks.txt | grep -oP "meta \w*=\"\w*"
 ```
+
+See https://regexr.com/
+
 ### 4. Only extract the follwing word (but not the keyword "meta")
 ```
 grep -o -E "meta [[:alpha:]]+" cyberattacks.txt | cut -d' ' -f2
@@ -793,9 +798,6 @@ cat cyberattacks.txt | grep -P "(?=title).+(?<=/title)"
 with -P we put in regrex mode so search by tag.
 https://www.rexegg.com/regex-lookarounds.html
 -o : display only the corresponding part of the text
-
-
-
 
 
 
