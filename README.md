@@ -748,6 +748,53 @@ ls -l / | grep bin | awk '{print $6, $7, $8}'
 ```
 ls -l / | grep bin | awk '{print $8"-"$6"-"$7}'
 ```
+## Exercise 2: Grep with Regex, and sed on unstructured data
+### 1. Run the following command : 
+```
+curl https ://en.wikipedia.org/wiki/List_of_cyberattacks > cyberattacks.txt
+```
+### 2. Use grep to extract all the lines that contain the keyword "meta"
+```
+grep "meta" cyberattacks.txt
+```
+### 3. Now only extract "meta" and the first following word. You might use grep options to enable the use of regex (Regular Expressions) 1
+```
+grep -o -E "meta [[:alpha:]]+" cyberattacks.txt
+```
+### 4. Only extract the follwing word (but not the keyword "meta")
+```
+grep -o -E "meta [[:alpha:]]+" cyberattacks.txt | cut -d' ' -f2
+```
+### 5. Let’s now try more interesting (yet complex) patterns. You might use vim to open the file and look for useful patterns. Let’s extract the introduction — We could ask grep to catch the paragraph corresponding to a sentence that is only present in the introduction. 
+Try to run the following command : 
+```
+cat cyberattacks.txt | grep -P ’A cyberattack is’
+```
+— This does not work since the source code is here different from what is visible on the web page. 
+Now try the following : 
+```
+cat cyberattacks.txt | grep -P ’A <a href="/wiki/Cyberattack" title="Cyberattack">cyberattack</a> is any type’ 
+```
+
+— It is now working, but what if the text evolves over time ? 
+Try the following instead :
+```
+cat cyberattacks.txt | grep -A1 ’mw-content-text’ | grep -v ’mw-content-text’
+```
+This is based on the text above that seems to be more stable.
+### 6. Your turn
+— Extract the tab title
+— Make a list of cyber attacks based on section titles
+```
+cat cyberattacks.txt | grep -o -E "<title>.*</title>" | cut -d'>' -f2 | cut -d'-' -f1
+cat cyberattacks.txt | grep -P "(?=title).+(?<=/title)"
+```
+
+with -P we put in regrex mode so search by tag.
+https://www.rexegg.com/regex-lookarounds.html
+-o : display only the corresponding part of the text
+
+
 
 
 
