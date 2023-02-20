@@ -604,7 +604,7 @@ touch say_hello.sh
 — It should write it in a file named ’hellos.txt’
 — Each new output should be appened to the file (it shouldn’t remove previous hellos)
 ```
-date +"%c - Hello" >> say_hellos.sh
+date +"%c - Hello" >> hellos.txt
 ```
 ### 2. Make the script executable
 ```
