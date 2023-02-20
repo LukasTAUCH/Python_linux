@@ -615,7 +615,7 @@ chmod +x say_hello.sh
 crontab -e
 * * * * * /home/lukas/my_programs/say_hello.sh
 ```
-To make the command work, you must reboot the system.
+To make the command work, you must reboot the system. So restart and not shut down the VM.
 
 To check status 
 ```
