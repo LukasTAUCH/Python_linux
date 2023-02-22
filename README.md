@@ -617,6 +617,12 @@ crontab -e
 ```
 To make the command work, you must reboot the system. So restart and not shut down the VM.
 
+Press the "i" key on your keyboard to enter insert mode. You should see "-- INSERT --" appear at the bottom of your text editor to indicate that you are in insert mode.
+
+Press the "Esc" key to exit insert mode.
+
+Note that the :wq command saves and exits the file at the same time. If you just want to save the file without leaving it, type :w instead of :wq. If you want to exit without saving, type :q.
+
 To check status 
 ```
 systemctl status cron
