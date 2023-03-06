@@ -25,11 +25,11 @@ def generate_table():
     df_today = df.loc[(df['date'] >= today_start) & (df['date'] <= today_end)]
 
     # Calculate the required metrics
-    variation = round((df_today['prix'].iloc[-1] - df_today['prix'].iloc[0]) / df_today['prix'].iloc[0] * 100, 2)
-    min_price = round(df_today['prix'].min(), 2)
-    max_price = round(df_today['prix'].max(), 2)
-    daily_volatility = round(df_today['prix'].std(), 2)
-    price_return = round((df_today['prix'].iloc[-1] - df_today['prix'].iloc[0]) / df_today['prix'].iloc[0] * 100, 2)
+    variation = round((df_today['prix'].iloc[-1] - df_today['prix'].iloc[0]) / df_today['prix'].iloc[0] * 100,2)
+    min_price = df_today['prix'].min()
+    max_price = df_today['prix'].max()
+    daily_volatility = round(df_today['prix'].std(),6)
+    price_return = round((df_today['prix'].iloc[-1] - df_today['prix'].iloc[0]) / df_today['prix'].iloc[0] * 100,4)
 
     # Create the table
     table = html.Div([
@@ -61,11 +61,11 @@ def generate_table_yesterday():
     df_yesterday = df.loc[(df['date'] >= yesterday_start) & (df['date'] <= yesterday_end)]
 
     # Calculate the required metrics for yesterday
-    variation = round((df_yesterday['prix'].iloc[-1] - df_yesterday['prix'].iloc[0]) / df_yesterday['prix'].iloc[0] * 100, 2)
-    min_price = round(df_yesterday['prix'].min(), 2)
-    max_price = round(df_yesterday['prix'].max(), 2)
-    daily_volatility = round(df_yesterday['prix'].std(), 2)
-    price_return = round((df_yesterday['prix'].iloc[-1] - df_yesterday['prix'].iloc[0]) / df_yesterday['prix'].iloc[0] * 100, 2)
+    variation = round((df_yesterday['prix'].iloc[-1] - df_yesterday['prix'].iloc[0]) / df_yesterday['prix'].iloc[0] * 100,2)
+    min_price = df_yesterday['prix'].min()
+    max_price = df_yesterday['prix'].max()
+    daily_volatility = round(df_yesterday['prix'].std(),6)
+    price_return = round((df_yesterday['prix'].iloc[-1] - df_yesterday['prix'].iloc[0]) / df_yesterday['prix'].iloc[0] * 100,4)
 
     # Create the table for yesterday
     table = html.Div([
@@ -94,7 +94,7 @@ def get_table():
     if now.hour >= today_at_8pm.hour:
         return generate_table()
     else:
-        return generate_table() #_yesterday()
+        return generate_table_yesterday()
 
 
 # Créer le tableau de bord
