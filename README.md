@@ -1,5 +1,188 @@
 # Python_linux
 
+# Projet 
+
+The goal of the project is to retrieve data from a site using bash, then make a dashboard to show the data.
+Plot this data and analyze it every 20 hours.
+We have to automate this every 5 mins.
+
+## Data recovery: Scrip_Donnee 
+The first script "Script_Donnee" makes it possible to recover the source code of the site which I put in a text file.
+```
+curl https://www.google.com/finance/quote/ADA-EUR?hl=fr > /home/ec2-user/Projet_Linux_Python/Code_Source_Site.txt
+```
+Then, I put the date and the data retrieved with a regrex as a variable, which I then put in a csv.
+https://regexr.com/79mgb
+s
+```
+# We just retrieve the data with regrex
+# (?<= tag )[^<]+ will retrieve all characters after the tag, but there is only the price
+# Also, since we're going to have to make a csv, I'm replacing the , with a . because the comma in csv allows to separate the column
+
+var=$(cat /home/ec2-user/Projet_Linux_Python/Code_Source_Site.txt | grep -oP '(?<="YMlKec fxKbKc">)[^<]+' | tr ',' '.')
+
+# then we put the 2 variables in a csv file
+echo "$current_time,$var" >> /home/ec2-user/Projet_Linux_Python/Prix.csv
+```
+
+## Creating the server with dash: Interface_Dashboard.py
+
+Here we will create a server with the "Dash" library.
+To implement it, you have to do, on aws with amazon linux, the following command:
+```
+# check if you have python3
+python3 
+
+# If not 
+sudo yum install python3 
+
+# yum is for aws amazon linux 
+# maybe apt for ubunto
+
+# install libraries
+pip3 install dash
+```
+
+Then with this command:
+```
+app.run_server(host = "0.0.0.0", port = 8050, debug=True)
+```
+We created our server now with aws, we must put it online and accessible to everyone.
+
+## Make the server accessible for everyone
+
+To make the server accessible to everyone via aws:
+
+- Go to your instance's security group
+- Take the one where in the description there is 'launch-wizard'
+- Go to it and go to the incoming rules and do "edit incoming rules"
+- Creat a new rule
+- Then set the 'type' to "Custom TPC" then the 'port' to "8050" and the 'version' to "Anyone IPV4"
+- Then save the new rule
+
+Now to go to his server:
+
+- go to your instance
+- retrieve the 'automatically assigned IP address'
+- And in the url bar of your browser put 'public ip address:8050'
+
+note: to see the server you will have to run the python code in ammout
+```
+python3 file.py # with the dash server
+```
+## Update Dash
+
+Now that we have managed to make our server work, we have to update it with the latest data without restarting it by hand each time.
+```
+# This file allows us to update our dashboard with the new data from our csv
+# The problem being that processes are running in the background
+# If we had done a crontab -e then /usr/bin/python3 /path/Interface_Dashboard.py
+# So there is process creation in our system
+# To see them ps -ax
+# for kill sudo kill -9 [process_key_number]
+
+# So here we automate by killing all the processes having port 8050 which is our dashboard server
+# Then we restart our server
+sudo fuser -k 8050/tcp
+/usr/bin/python3 /home/ec2-user/Projet_Linux_Python/Interface_Dashboard.py
+```
+
+## automation of dashboard and data recovery
+
+We use crontab (see ex 3 below) for more details on crontab
+```
+crontab -e  # to go into automation
+crontab -l  # to see the different commands.
+```
+
+```
+*/5 * * * * /home/ec2-user/Projet_Linux_Python/Script_Donnee.sh
+*/5 * * * * /home/ec2-user/Projet_Linux_Python/Update_Dash.sh
+
+# To insert a command do 'i'
+# to save do esc ':wq'
+# save only esc ':w'
+# quit esc ':q'
+# see list command 'crontab -l'
+```
+
+```
+*     *     *     *     *  command to be executed
+-     -     -     -     -
+|     |     |     |     |
+|     |     |     |     +----- day of the week (0 - 6) (Sunday = 0)
+|     |     |     +------- month (1 - 12)
+|     |     +--------- day of the month (1 - 31)
+|     +----------- hour (0 - 23)
++------------- min (0 - 59)
+```
+
+Note: It is important to put all the paths each time to prevent the files from being created in user and not in your file.
+
+## Github
+
+Personally, I already had a repository (which is this one) and so I wanted to put the different scripts in this repository.
+
+So I'm not going to 'git init' but rather 'git clone'.
+
+First, we will need an 'access token' because password reading is no longer possible since 2021 on linux (in fact, to interact with git we must connect to our account)
+- Go to your github
+- In parameter
+- Then 'Developer settings'
+- Personal access tokens then token classic
+- Generate new token and put unlimited time and tick all the boxes
+- Then copy your access token and keep it PRECIOUSLY because it is your new PASSWORD
+
+we return to your instance
+we check if we have 'git'
+```
+git
+
+# if not 
+sudo yum install git
+```
+Then do:
+```
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+git config -l
+```
+
+Then in our folder with all the files of our project:
+``` 
+git clone [ulr repository]
+
+# [ url repository like https://github.com/user/RepositoryName.git
+# This URL is found in the code button in green
+```
+
+So we just 'pull' the files from our repository to our instance.
+There is therefore a creation of a folder which is your 'repository'
+
+Note: 
+Difference between commit pull and push
+commit: we just put the local files of our computer in our local git
+pull: We retrieve the files that are in the git server locally
+push: We send the local files to the git server
+
+So we just copy our files into this new folder
+```
+cp file file file file
+```
+
+note: the last 'file' is where all others will be copied
+If you copy an existing file in the folder, it will overwrite the old file already present in the folder
+
+Then go to your repository folder:
+```
+- git add .   # Pour add all the files
+- git commit -m "first commit" # on can write anything in ""
+- git push
+# put your username and password the ACCESS TOKEN made previously
+```
+
+End of the project
+
 # TD 1
 
 I specify to avoid repeating, I replace __"lukas@Lukas-VM:"__ simply by the __nothing__ thus the commands which I will write __"lukas@Lukas-VM:"__ this locates in front. For example: __"lukas@Lukas-VM:~$pwd"__ I will write __"~$pwd"__ with the result.
