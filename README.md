@@ -2,6 +2,8 @@
 
 # Projet 
 
+Here is my dashboard the final result: http://3.237.97.41:8050/
+
 The goal of the project is to retrieve data from a site using bash, then make a dashboard to show the data.
 Plot this data and analyze it every 20 hours.
 We have to automate this every 5 mins.
