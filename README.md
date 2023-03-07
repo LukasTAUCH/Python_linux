@@ -163,7 +163,7 @@ There is therefore a creation of a folder which is your 'repository'
 
 Note: 
 Difference between commit pull and push
-commit: we just put the local files of our computer in our local git
+commit: We put the different local folders in the same file which comes 'sticker'
 pull: We retrieve the files that are in the git server locally
 push: We send the local files to the git server
 
