@@ -42,7 +42,7 @@ sudo yum install python3
 # install libraries
 pip3 install dash
 ```
-
+https://dash.plotly.com/ml-and-ai-templates
 Then with this command:
 ```
 app.run_server(host = "0.0.0.0", port = 8050, debug=True)
