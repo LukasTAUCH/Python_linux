@@ -8,7 +8,7 @@ The goal of the project is to retrieve data from a site using bash, then make a 
 Plot this data and analyze it every 20 hours.
 We have to automate this every 5 mins.
 
-## Data recovery: Scrip_Donnee 
+## Data recovery: Script_Donnee 
 The first script "Script_Donnee" makes it possible to recover the source code of the site which I put in a text file.
 ```
 curl https://www.google.com/finance/quote/ADA-EUR?hl=fr > /home/ec2-user/Projet_Linux_Python/Code_Source_Site.txt
