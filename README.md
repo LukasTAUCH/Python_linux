@@ -1048,5 +1048,6 @@ git push origin <your-branch-name>
 
 ## Exercise 6: Delete a branch
 ```
-
+git branch -d <branch-name>
+git push <remote-name> --delete <branch-name>
 ```
