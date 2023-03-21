@@ -1006,7 +1006,6 @@ git add <your-name>.txt
 git commit -m "Add file created by <your-name>"
 git push origin <your-name>
 ```
-<<<<<<< HEAD
 
 ## Exercise 3: Merge simple changes
 ```
@@ -1046,29 +1045,35 @@ git add README.md
 git commit -m "Merge main to branch"
 git push origin <your-branch-name>
 ```
-=======
->>>>>>> 5d2f561e76d225d90a071f91e3f57cb99d615f23
 
-## Exercise 3: Merge simple changes
+## Exercise 6: Delete a branch
+```
+git branch -d <branch-name>
+git push origin --delete <branch-name>
+```
+
+## Exercise 7: Rebase interactively to have a clean history
 ```
 git checkout main
-git config pull.rebase false
-git merge LukasTAUCH
-git commit -m "Merge LukasTAUCH into main"
 git pull
-git push
-```
-
-## Exercise 4: Resolve merge conflicts
-
-```
-git checkout <your-name>
+git checkout <your-branch-name>
+echo "" > README.md
+echo "Git interactive rebase" > README.md
 nano README.md
-git add README.md
-git commit -m "Update README.md with new text"
-git checkout master
-git pull origin master
-git merge <branch-name>
+echo "Changing Multiple Commit Messages" >> README.md
+sed -i '11d' README.md
+sed -i '10i Changing Multiple Commit Messages' README.md
+echo "Created by here_ur_name" >> README.md
+git rebase -i HEAD~n
+#n the number of commit that you do
+git push -u origin <your-branch-name>
 ```
 
-Voici le readme propre a la branche lukasTAUCH
+## Exercise 8: Create and approve a Merge/Pull Request
+```
+git checkout main
+git pull origin main
+git checkout <your-branch-name>
+git rebase main
+git push -f origin <your-branch-name>
+```
