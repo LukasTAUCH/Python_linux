@@ -1051,3 +1051,23 @@ git push origin <your-branch-name>
 git branch -d <branch-name>
 git push <remote-name> --delete <branch-name>
 ```
+
+## Exercise 7: Rebase interactively to have a clean history
+```
+git checkout master
+git pull
+git checkout <your-branch-name>
+echo "" > README.md
+echo "Git interactive rebase" > README.md
+nano README.md
+echo "Changing Multiple Commit Messages" >> README.md
+sed -i '11d' README.md
+sed -i '10i Changing Multiple Commit Messages' README.md
+echo "Created by here_ur_name" >> README.md
+git rebase -i HEAD~n
+#n the number of commit that you do
+git push -u origin <your-branch-name>
+```
+
+
+
