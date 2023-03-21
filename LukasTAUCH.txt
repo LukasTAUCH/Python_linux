@@ -1,0 +1,1 @@
+echo "My file by LukasTAUCH" > /home/ec2-user/Td_4_Git_Branches/Python_linux/LukasTAUCH.txt
