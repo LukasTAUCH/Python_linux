@@ -1024,12 +1024,25 @@ git checkout <your-name>
 nano README.md
 git add README.md
 git commit -m "Update README.md with new text"
-git checkout master
-git pull origin master
+git checkout main
+git pull origin main
 git merge <branch-name>
+# We creat a conflict but we editing the readme to correct that
+git push origin master
 ```
 
 Voici le readme propre a LukasTAUCH
 Voici le readme propre a samiBenzekri
+
+## Exercise 5: Take latest changes from master in local branch
+
+```
+git checkout master
+git pull origin master
+git checkout <your-branch-name>
+git merge master
+git commit -m "Merge latest changes from master branch"
+git push origin <your-branch-name>
+```
 
 
