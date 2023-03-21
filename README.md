@@ -1008,7 +1008,14 @@ git push origin <your-name>
 ```
 
 ## Exercise 3: Merge simple changes
-
+```
+git checkout main
+git config pull.rebase false
+git merge LukasTAUCH
+git commit -m "Merge LukasTAUCH into main"
+git pull
+git push
+```
 
 
 
