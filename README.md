@@ -992,5 +992,23 @@ with -P we put in regrex mode so search by tag.
 https://www.rexegg.com/regex-lookarounds.html
 -o : display only the corresponding part of the text
 
+# TD 4 : GIT BRANCHES
+## Exercise 1: Clone a Git repository
+```
+git clone <repository URL>
+```
+## Exercise 2: Push files to common repository
+```
+git branch <your-name>
+git checkout <your-name>
+nano your-name>.txt
+git add <your-name>.txt
+git commit -m "Add file created by <your-name>"
+git push origin <your-name>
+```
+
+## Exercise 3: Merge simple changes
+
+
 
 
