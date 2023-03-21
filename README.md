@@ -1001,7 +1001,7 @@ git clone <repository URL>
 ```
 git branch <your-name>
 git checkout <your-name>
-echo "My file by <your-name>" > /path/<your-name>.txt
+nano your-name>.txt
 git add <your-name>.txt
 git commit -m "Add file created by <your-name>"
 git push origin <your-name>
