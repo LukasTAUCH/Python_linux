@@ -1040,8 +1040,9 @@ Voici le readme propre a samiBenzekri
 git checkout main
 git pull origin main
 git checkout <your-branch-name>
-git merge master
-git commit -m "Merge latest changes from master branch"
+git merge main
+git add README.md
+git commit -m "Merge main to branch"
 git push origin <your-branch-name>
 ```
 
