@@ -1054,7 +1054,7 @@ git push origin --delete <branch-name>
 
 ## Exercise 7: Rebase interactively to have a clean history
 ```
-git checkout master
+git checkout main
 git pull
 git checkout <your-branch-name>
 echo "" > README.md
@@ -1068,6 +1068,16 @@ git rebase -i HEAD~n
 #n the number of commit that you do
 git push -u origin <your-branch-name>
 ```
+
+## Exercise 8: Create and approve a Merge/Pull Request
+```
+git checkout main
+git pull origin main
+git checkout <your-branch-name>
+git rebase main
+git push -f origin <your-branch-name>
+```
+
 
 
 
