@@ -1046,4 +1046,7 @@ git commit -m "Merge main to branch"
 git push origin <your-branch-name>
 ```
 
+## Exercise 6: Delete a branch
+```
 
+```
