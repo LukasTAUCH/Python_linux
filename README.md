@@ -1037,8 +1037,8 @@ Voici le readme propre a samiBenzekri
 ## Exercise 5: Take latest changes from master in local branch
 
 ```
-git checkout master
-git pull origin master
+git checkout main
+git pull origin main
 git checkout <your-branch-name>
 git merge master
 git commit -m "Merge latest changes from master branch"
