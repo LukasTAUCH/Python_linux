@@ -1017,5 +1017,18 @@ git pull
 git push
 ```
 
+## Exercise 4: Resolve merge conflicts
+
+```
+git checkout <your-name>
+nano README.md
+git add README.md
+git commit -m "Update README.md with new text"
+git checkout master
+git pull origin master
+git merge <branch-name>
+```
+
+
 
 
