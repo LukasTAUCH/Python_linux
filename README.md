@@ -1051,7 +1051,10 @@ the final result.
 awk -F, 'NR>1 {sum += $2} END {print sum}' derbyshire_manors.csv
 ```
 
-## 
+## Exercise 1:.6 Bonus
+
+Use Vim to write a single bash script that does all of these actions
+
 ```
 echo "Checking data for various URLs:"
 curl -s 'https://opendomesday.org/api/1.0/county/'
