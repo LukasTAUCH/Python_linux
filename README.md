@@ -992,6 +992,93 @@ with -P we put in regrex mode so search by tag.
 https://www.rexegg.com/regex-lookarounds.html
 -o : display only the corresponding part of the text
 
+# TD Linux API
+
+## Exercise 1:.1 curl
+```
+curl https://opendomesday.org/api/1.0/county/
+curl https://opendomesday.org/api/1.0/place/2346/
+curl https://opendomesday.org/api/1.0/manor/181/
+```
+
+## Exercise 1:.2 curl and grep
+Let’s try to get the ids for all the places in Derbyshire !
+```
+curl -s 'https://opendomesday.org/api/1.0/county/' | jq '.[] | select(.name == "Derbyshire") | .places[]'
+```
+"jq" is used to manipulate and process JSON data 
+
+## Exercise 1:.3 curl, grep and for
+Now that we have ids for all the places in Derbyshire, we can load all their
+details...
+
+And from their details, we can list all the details of their manors.
+Go grep the data !
+
+```
+derbyshire_place_ids=$(curl -s 'https://opendomesday.org/api/1.0/county/' | jq '.[] | select(.name == "Derbyshire") | .places[]')
+for id in $derbyshire_place_ids; do
+  curl -s "https://opendomesday.org/api/1.0/place/${id}/" | jq '.manors[]'
+done
+```
+
+## Exercise 1:.4 curl, grep, for and sed
+Now that we have a heap of raw data, we will extract the interesting parts.
+In our case we want to count the geld paid by each manor and compare it to
+the number of ploughs it owns.
+— Can you find the corresponding json fields ?
+— Then you can list these numbers for each manor in Derbyshire.
+— And format this in a proper comma-separated values (CSV) file.
+```
+echo "Manor ID,Geld,Ploughs" > derbyshire_manors.csv
+for id in $derbyshire_place_ids; do
+  place_data=$(curl -s "https://opendomesday.org/api/1.0/place/${id}/")
+  manor_ids=$(echo "$place_data" | jq '.manors[]')
+  for manor_id in $manor_ids; do
+    manor_data=$(curl -s "https://opendomesday.org/api/1.0/manor/${manor_id}/")
+    geld=$(echo "$manor_data" | jq '.geld')
+    ploughs=$(echo "$manor_data" | jq '.ploughs')
+    echo "${manor_id},${geld},${ploughs}" >> derbyshire_manors.csv
+  done
+done
+```
+
+## Exercise 1:.5 discover new commands
+The CSV file you created could be loaded in Excel. But do you have one ?
+Use your search skills to find a way to sum values in a column and provide
+the final result.
+```
+awk -F, 'NR>1 {sum += $2} END {print sum}' derbyshire_manors.csv
+```
+
+## 
+```
+echo "Checking data for various URLs:"
+curl -s 'https://opendomesday.org/api/1.0/county/'
+curl -s 'https://opendomesday.org/api/1.0/place/2346/'
+curl -s 'https://opendomesday.org/api/1.0/manor/181/'
+
+
+echo "Getting Derbyshire place IDs:"
+derbyshire_place_ids=$(curl -s 'https://opendomesday.org/api/1.0/county/' | jq '.[] | select(.name == "Derbyshire") | .places[]')
+
+echo "Getting Derbyshire manor details:"
+echo "Manor ID,Geld,Ploughs" > derbyshire_manors.csv
+for id in $derbyshire_place_ids; do
+  place_data=$(curl -s "https://opendomesday.org/api/1.0/place/${id}/")
+  manor_ids=$(echo "$place_data" | jq '.manors[]')
+  for manor_id in $manor_ids; do
+    manor_data=$(curl -s "https://opendomesday.org/api/1.0/manor/${manor_id}/")
+    geld=$(echo "$manor_data" | jq '.geld')
+    ploughs=$(echo "$manor_data" | jq '.ploughs')
+    echo "${manor_id},${geld},${ploughs}" >> derbyshire_manors.csv
+  done
+done
+
+echo "Calculating the sum of the Geld column:"
+awk -F, 'NR>1 {sum += $2} END {print sum}' derbyshire_manors.csv
+```
+
 # TD 4 : GIT BRANCHES
 ## Exercise 1: Clone a Git repository
 ```
