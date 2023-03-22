@@ -1082,7 +1082,7 @@ echo "Calculating the sum of the Geld column:"
 awk -F, 'NR>1 {sum += $2} END {print sum}' derbyshire_manors.csv
 ```
 
-## TD 3 GIT Local Git Filesystem & Commits
+# TD 3 GIT Local Git Filesystem & Commits
 
 ## Exercise 1: Configure Git
 ### 1. Check that Git is installed on your environment.
